@@ -1,7 +1,10 @@
 {
   "version": "0.0.0",
   "keywords": [
-    "trails"
+    "trails",
+    "openwhisk",
+    "serverless",
+    "cobol"
   ],
   "main": "index.js",
   "dependencies": {
