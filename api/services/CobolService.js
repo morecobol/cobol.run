@@ -12,7 +12,7 @@ module.exports = class CobolService extends Service {
     return Promise.all([
       files.map(file => new Promise((resolve, reject) => {
         this.log.info('CobolService.writeFiles: writing file', file.fd, '...')
-        fs.writeFile(file.fd, file.data, error => {
+        fs.writeFile(file.fd, file.data + '\n', error => {
           if (error) return reject({ error })
 
           this.log.info('CobolService.writeFiles: wrote file', file.fd, '...')
@@ -38,7 +38,7 @@ module.exports = class CobolService extends Service {
       cobc.stderr.on('data', data => error += data.toString())
       cobc.on('close', code => {
         if (code === 0) resolve({ code, output: output.trim() })
-        else reject({ code, error })
+        else reject({ code, error: error.trim() })
       })
     })
   }
