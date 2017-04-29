@@ -35,8 +35,8 @@ The user sends a `POST` request containing COBOL source code, and receives as a 
 
 ### `POST` payload
 
-|:---|:---|:---|:---|
 | **field** | **type** | **description** | **required** |
+|:---|:---|:---|:---|
 | `sources` | `Array (File)` | List of sources to compile and run | yes |
 | `files` | `Array (File)` | List of files required by the cobol program | no |
 | `args` | `Array (String)` | List of arguments to pass into the cobol program at runtime | no |
@@ -46,8 +46,8 @@ The user sends a `POST` request containing COBOL source code, and receives as a 
 
 The `sources` and `files` arrays contain `File` objects.
 
-|:---|:---|:---|:---|
 | **field** | **type** | **description** | **required** |
+|:---|:---|:---|:---|
 | `fd` | `String` | Name of the file | yes |
 | `data` | `String` | Contents of the file | yes |
 
