@@ -1,4 +1,4 @@
-# <img src="http://cdn.langa.io/cobol.run/morecobol-icon-square.png" height="42px"> cobol.run
+# <img src="http://cdn.langa.io/cobol.run/morecobol-icon-square.png" height="48px"> cobol.run
 
 [![Docker Repository][docker-image]][docker-url]
 [![Build status][ci-image]][ci-url]
