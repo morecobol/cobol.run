@@ -10,6 +10,7 @@ module.exports = class OpenwhiskController extends Controller {
    * Check any necessary preconditions for the action
    */
   init (request, reply) {
+    this.log.info('OpenwhiskController.init: request payload', request.payload)
     reply({ OK: true })
   }
 
@@ -19,12 +20,11 @@ module.exports = class OpenwhiskController extends Controller {
   run (request, reply) {
     const payload = Object.assign({
       args: [ ],
-      sources: [ ],
       files: [ ],
-      flags: [ ]
+      options: { }
     }, request.payload.value)
 
-    this.log.info('OpenwhiskController.run: invoking action with payload', payload)
+    this.log.info('OpenwhiskController.run: invoking action with payload', request.payload.value)
 
     reply(this.services.OpenwhiskService.run(payload))
   }

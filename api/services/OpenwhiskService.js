@@ -8,9 +8,9 @@ module.exports = class OpenwhiskService extends Service {
 
   }
 
-  run ({ args, sources, files, flags }) {
-    return this.services.CobolService.writeFiles([ ...files, ...sources ])
-      .then(() => this.services.CobolService.compileAndRun(sources, flags, args))
+  run ({ args, source, files, options }) {
+    return this.services.CobolService.writeFiles(files)
+      .then(() => this.services.CobolService.compileAndRun(source, options, args))
       .catch(err => {
         this.log.error('OpenwhiskService.run error', err)
         return err

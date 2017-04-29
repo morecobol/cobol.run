@@ -11,24 +11,23 @@ module.exports = class CobolService extends Service {
   writeFiles (files) {
     return Promise.all([
       files.map(file => new Promise((resolve, reject) => {
-        this.log.info('CobolService.writeFiles: writing file', file.fd, '...')
-        fs.writeFile(file.fd, file.data + '\n', error => {
+        this.log.info('CobolService.writeFiles: writing file', file.name, '...')
+        fs.writeFile(file.name, file.data + '\n', error => {
           if (error) return reject({ error })
 
-          this.log.info('CobolService.writeFiles: wrote file', file.fd, '...')
+          this.log.info('CobolService.writeFiles: wrote file', file.name, '...')
           return resolve({ file })
         })
       }))
     ])
   }
 
-  compileAndRun (sources = [ ], flags = [ ], args = [ ]) {
+  compileAndRun (source, options = { }, args = [ ]) {
     let output = ''
     let error = ''
 
-    const sourceFds = sources.map(source => source.fd)
-
-    const spawnArgs = [ ...flags, '-xjF', ...sourceFds, ...args ]
+    const compilerOptions = this.getCompilerOptions(options, options.dialect)
+    const spawnArgs = [ ...compilerOptions, ...args ]
 
     return new Promise((resolve, reject) => {
       this.log.info('CobolService.compileAndRun: spawning cobc process with args', spawnArgs)
@@ -40,6 +39,23 @@ module.exports = class CobolService extends Service {
         if (code === 0) resolve({ code, output: output.trim() })
         else reject({ code, error: error.trim() })
       })
+
+      cobc.stdin.write(source)
+      cobc.stdin.end()
     })
+  }
+
+  getCompilerOptions (options, dialect = 'default') {
+    if (!this.config.cobol.dialects[dialect]) {
+      throw new RangeError(`Specified dialect "${dialect}" not supported`)
+    }
+    const dialectFlag = `-std=${dialect}`
+
+    return [ '-xjF', dialectFlag, '-' ]
+  }
+
+  constructor (app) {
+    super(app)
+    this.log.info('Using cobc compiler version', this.config.cobol.compilerVersion)
   }
 }

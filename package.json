@@ -20,7 +20,8 @@
     "trailpack-repl": "^2"
   },
   "scripts": {
-    "test": "eslint . && mocha"
+    "test": "eslint . && mocha",
+    "start": "COBC_VERSION=$(cob-config --version) node server.js"
   },
   "engines": {
     "node": ">= 7.6.0"
