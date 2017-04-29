@@ -1,0 +1,24 @@
+dist: trusty
+language: node_js
+node_js:
+  - 7
+
+addons:
+  apt:
+    packages:
+      - gcc
+      - make
+      - libdb-dev
+      - libncurses5-dev
+      - libgmp-dev
+      - autoconf
+
+before_install:
+  - wget https://s3.amazonaws.com/cobol.run/gnu-cobol-2.0_rc-2.tar.gz
+  - tar zxf gnu-cobol-2.0_rc-2.tar.gz
+  - cd gnu-cobol-2.0
+  - ./configure
+  - make && make install
+  - make check
+  - ldconfig
+  - cobc --version
