@@ -1,4 +1,4 @@
-# cobol.run
+# <img src="http://cdn.langa.io/cobol.run/morecobol-icon-square.png" height="32px"> cobol.run
 
 [![Docker Repository][docker-image]][docker-url]
 [![Build status][ci-image]][ci-url]
@@ -15,12 +15,10 @@ The user sends a `POST` request containing COBOL source code, and receives as a 
 - Request: `POST /compileAndRun`
   ```json
   {
-    "sources": [
-      {
-        "fd": "main.cob",
-        "data": "identification division. program-id. hello. procedure division. display \"hello world\"."
-      }
-    ]
+    "options": {
+      "dialect": "cobol2014"
+    },
+    "source": "identification division. program-id. hello. procedure division. display \"hello world\"."
   }
   ```
 - Response:
@@ -37,18 +35,18 @@ The user sends a `POST` request containing COBOL source code, and receives as a 
 
 | **field** | **type** | **description** | **required** |
 |:---|:---|:---|:---|
-| `sources` | `Array (File)` | List of sources to compile and run | yes |
+| `source` | `String` | the COBOL source to compile and run | yes |
 | `files` | `Array (File)` | List of files required by the cobol program | no |
 | `args` | `Array (String)` | List of arguments to pass into the cobol program at runtime | no |
-| `flags` | `Array (String)` | List of custom [gnucobol](https://sourceforge.net/projects/open-cobol/) compiler flags | no |
+| `options` | `Object` | List of custom [gnucobol](https://sourceforge.net/projects/open-cobol/) compiler flags | no |
 
 #### `File`
 
-The `sources` and `files` arrays contain `File` objects.
+The `files` array contains `File` objects.
 
 | **field** | **type** | **description** | **required** |
 |:---|:---|:---|:---|
-| `fd` | `String` | Name of the file | yes |
+| `name` | `String` | Name of the file | yes |
 | `data` | `String` | Contents of the file | yes |
 
 ## License
