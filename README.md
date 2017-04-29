@@ -1,34 +1,65 @@
-Blackbox Actions
-================
+# cobol.run
 
-1. Download and install the OpenWhisk CLI
-2. Install OpenWhisk Docker action skeleton.
-3. Add user code
-4. Build image
-5. Push image
-6. Test out action with CLI
+[![Docker Repository][docker-image]][docker-url]
+[![Build status][ci-image]][ci-url]
+[![Follow @morecobol on Twitter][twitter-image]][twitter-url]
 
-The script `buildAndPush.sh` is provided for your convenience. The following command sequence
-runs the included example Docker action container using OpenWhisk.
+Run serverless COBOL programs on [OpenWhisk](https://www.ibm.com/cloud-computing/bluemix/openwhisk). Built with [Trails.js](https://trailsjs.io) and Node.
 
-```
-# install dockerSkeleton with example
-wsk sdk install docker
+## Usage
 
-# change working directory
-cd dockerSkeleton
+The user sends a `POST` request containing COBOL source code, and receives as a response the result of the execution of the program.
 
-# build/push, argument is your docker hub user name and a valid docker image name
-./buildAndPush <dockerhub username>/whiskexample
+### Example
 
-# create docker action
-wsk action create dockerSkeletonExample --docker <dockerhub username>/whiskExample
+- Request: `POST /compileAndRun`
+  ```json
+  {
+    "sources": [
+      {
+        "fd": "main.cob",
+        "data": "identification division. program-id. hello. procedure division. display \"hello world\"."
+      }
+    ]
+  }
+  ```
+- Response:
+  ```json
+  {
+    "code": 0,
+    "output": "hello world"
+  }
+  ```
 
-# invoke created action
-wsk action invoke dockerSkeletonExample --blocking
-```
+## API
 
-The executable file must be located in the `/action` folder.
-The name of the executable must be `/action/exec` and can be any file with executable permissions.
-The sample docker action runs `example.c` by copying and building the source inside the container
-as `/action/exec` (see `Dockerfile` lines 7 and 14).
+### `POST` payload
+
+|:---|:---|:---|:---|
+| **field** | **type** | **description** | **required** |
+| `sources` | `Array (File)` | List of sources to compile and run | yes |
+| `files` | `Array (File)` | List of files required by the cobol program | no |
+| `args` | `Array (String)` | List of arguments to pass into the cobol program at runtime | no |
+| `flags` | `Array (String)` | List of custom [gnucobol](https://sourceforge.net/projects/open-cobol/) compiler flags | no |
+
+#### `File`
+
+The `sources` and `files` arrays contain `File` objects.
+
+|:---|:---|:---|:---|
+| **field** | **type** | **description** | **required** |
+| `fd` | `String` | Name of the file | yes |
+| `data` | `String` | Contents of the file | yes |
+
+## License
+MIT
+
+## Maintained By
+[<img src='http://cdn.langa.io/art/logos/logomain.svg' height='64px'>](http://langa.io)
+
+[docker-image]: https://img.shields.io/badge/Docker-cobol.run-1aaaf8.svg?style=flat-square
+[docker-url]: https://hub.docker.com/r/morecobol/cobol.run/
+[ci-image]: https://img.shields.io/travis/morecobol/cobol.run.svg?style=flat-square&label=Linux%20/%20OSX
+[ci-url]: https://travis-ci.org/morecobol/cobol.run
+[twitter-image]: https://img.shields.io/twitter/follow/morecobol.svg?style=social
+[twitter-url]: https://twitter.com/morecobol
