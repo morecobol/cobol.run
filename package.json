@@ -1,0 +1,28 @@
+{
+  "version": "0.0.0",
+  "keywords": [
+    "trails"
+  ],
+  "main": "index.js",
+  "dependencies": {
+    "trailpack-hapi": "3.0.0-pre.4",
+    "trailpack-router": "3.0.0-pre.1",
+    "trails": "3.0.0-pre.2"
+  },
+  "devDependencies": {
+    "eslint": "^3",
+    "eslint-config-trails": "^3",
+    "mocha": "^3",
+    "supertest": "^3",
+    "trailpack-repl": "^2"
+  },
+  "scripts": {
+    "test": "eslint . && mocha"
+  },
+  "engines": {
+    "node": ">= 7.6.0"
+  },
+  "eslintConfig": {
+    "extends": "trails"
+  }
+}

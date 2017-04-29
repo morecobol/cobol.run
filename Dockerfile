@@ -1,17 +1,13 @@
-# Dockerfile for example whisk docker action
-FROM openwhisk/dockerskeleton
- 
-ENV FLASK_PROXY_PORT 8080
+FROM morecobol/gnucobol
 
-### Add source file(s)
-ADD example.c /action/example.c
+# install node and other sys dependencies
+RUN apt-get install curl -y
+RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
+RUN apt-get install -y nodejs
 
-RUN apk add --no-cache --virtual .build-deps \
-        bzip2-dev \
-        gcc \
-        libc-dev \
-### Compile source file(s)
- && cd /action; gcc -o exec example.c \
- && apk del .build-deps
+WORKDIR /usr/src/app
+COPY . .
+RUN npm install
 
-CMD ["/bin/bash", "-c", "cd actionProxy && python -u actionproxy.py"]
+CMD [ "node", "server.js" ]
+

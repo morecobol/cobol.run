@@ -1,0 +1,1 @@
+exports.OpenwhiskController = require('./OpenwhiskController')

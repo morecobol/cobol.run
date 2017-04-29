@@ -1,0 +1,1 @@
+exports.OpenwhiskService = require('./OpenwhiskService')
