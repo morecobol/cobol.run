@@ -37,7 +37,7 @@ module.exports = class CobolService extends Service {
       cobc.stdout.on('data', data => output += data.toString())
       cobc.stderr.on('data', data => error += data.toString())
       cobc.on('close', code => {
-        if (code === 0) resolve({ code, output })
+        if (code === 0) resolve({ code, output: output.trim() })
         else reject({ code, error })
       })
     })
