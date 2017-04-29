@@ -20,6 +20,5 @@ before_install:
   - ./configure
   - make
   - sudo make install
-  - make check
   - sudo ldconfig
   - cobc --version
