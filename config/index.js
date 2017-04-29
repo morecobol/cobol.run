@@ -2,6 +2,7 @@
  * Trails Configuration Manifest
  * @see {@link http://trailsjs.io/doc/config/manifest}
  */
+exports.cobol = require('./cobol')
 exports.env = require('./env')
 exports.log = require('./log')
 exports.main = require('./main')

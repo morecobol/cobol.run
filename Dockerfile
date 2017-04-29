@@ -7,6 +7,7 @@ RUN apt-get install -y nodejs
 
 WORKDIR /usr/src/app
 COPY . .
+RUN rm -rf node_modules
 RUN npm install
 
 CMD [ "node", "server.js" ]

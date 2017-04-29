@@ -15,11 +15,19 @@ module.exports = class OpenwhiskController extends Controller {
 
   /**
    * Activate!
+   *
    */
   run (request, reply) {
-    const message = request.payload
+    const payload = Object.assign({
+      args: [ ],
+      sources: [ ],
+      files: [ ],
+      flags: [ ]
+    }, request.payload.value)
 
-    return this.services.OpenwhiskService.run(message)
+    this.log.info('OpenwhiskController.run: invoking action with payload', payload)
+
+    reply(this.services.OpenwhiskService.run(payload))
   }
 }
 

@@ -16,7 +16,7 @@ module.exports = {
   /**
    * The host to bind the web server to
    */
-  host: process.env.HOST || '0.0.0.0',
+  host: '0.0.0.0',
 
   serverOptions: {
     mime: {
