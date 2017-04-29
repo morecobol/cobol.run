@@ -15,7 +15,6 @@ module.exports = class OpenwhiskController extends Controller {
 
   /**
    * Activate!
-   *
    */
   run (request, reply) {
     const payload = Object.assign({

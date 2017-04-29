@@ -18,7 +18,8 @@ before_install:
   - tar zxf gnu-cobol-2.0_rc-2.tar.gz
   - cd gnu-cobol-2.0
   - ./configure
-  - make && make install
+  - make
+  - sudo make install
   - make check
   - ldconfig
   - cobc --version
