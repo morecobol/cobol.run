@@ -1,8 +1,6 @@
 {
-  "sources": [
-    {
-      "fd": "main.cob",
-      "data": "identification division. program-id. hello. procedure division. display \"hello world\"."
-    }
-  ]
+  "options": {
+    "dialect": "cobol2014"
+  },
+  "source": "identification division. program-id. hello. procedure division. display \"hello world\"."
 }
