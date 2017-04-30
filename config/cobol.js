@@ -1,3 +1,4 @@
+/* eslint no-process-env: 0 */
 module.exports = {
   dialects: {
     'cobol2014': 'Cobol 2014 Dialect',
