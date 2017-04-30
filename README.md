@@ -10,6 +10,8 @@ Run serverless COBOL programs on [OpenWhisk](https://www.ibm.com/cloud-computing
 
 The user sends a `POST` request containing COBOL source code, and receives as a response the result of the execution of the program.
 
+<img src="http://cdn.langa.io/cobol.run/cobol-run-intro-video.png" width="640px">
+
 ### Example
 
 - Request: `POST /compileAndRun`
@@ -63,6 +65,12 @@ Supported COBOL dialects
 | `bs2000` | BS2000 Dialect |
 | `mf` | MicroFocus Dialect |
 | `acu` | ACUCOBOL Dialect |
+
+## Resources
+- [COBOL: Up and Running in 3 minutes](https://www.youtube.com/watch?v=3lx9ZeP47Hg)
+- [COBOL: Parsing Copybook Files into JSON](https://www.youtube.com/watch?v=RTqMMWOyvuU)
+- [Serverless COBOL on the Cloud: Introduction to cobol.run](https://www.youtube.com/watch?v=Wn2tE4VVYYQ)
+- [COBOL Programs as Functions: How The cobol.run Cloud FaaS Works, Part 1](https://www.youtube.com/watch?v=rsezV9vcXek)
 
 ## License
 MIT
