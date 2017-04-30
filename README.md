@@ -49,6 +49,21 @@ The `files` array contains `File` objects.
 | `name` | `String` | Name of the file | yes |
 | `data` | `String` | Contents of the file | yes |
 
+#### `options.dialect`
+
+Supported COBOL dialects
+
+| **dialect** | **description** |
+|:---|:---|
+| `cobol2014` | Cobol 2014 Dialect |
+| `cobol2002` | Cobol 2002 Dialect |
+| `cobol85` | Cobol 85 Dialect |
+| `ibm` | IBM Dialect |
+| `mvs` | MVS Dialect |
+| `bs2000` | BS2000 Dialect |
+| `mf` | MicroFocus Dialect |
+| `acu` | ACUCOBOL Dialect |
+
 ## License
 MIT
 
