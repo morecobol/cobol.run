@@ -8,12 +8,12 @@
 
 module.exports = [
   {
-    method: '*',
+    method: 'POST',
     path: '/init',
     handler: 'OpenwhiskController.init'
   },
   {
-    method: '*',
+    method: 'POST',
     path: '/run',
     handler: 'OpenwhiskController.run'
   }
