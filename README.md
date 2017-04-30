@@ -1,10 +1,12 @@
-# <img src="http://cdn.langa.io/cobol.run/morecobol-icon-square.png" height="48px"> cobol.run
+# cobol.run
 
 [![Docker Repository][docker-image]][docker-url]
 [![Build status][ci-image]][ci-url]
 [![Follow @morecobol on Twitter][twitter-image]][twitter-url]
 
 Run serverless COBOL programs on [OpenWhisk](https://www.ibm.com/cloud-computing/bluemix/openwhisk). Built with [Trails.js](https://trailsjs.io) and Node.
+
+<img src="http://cdn.langa.io/cobol.run/cobol-flow-diagram.png" width="640px">
 
 ## Usage
 
