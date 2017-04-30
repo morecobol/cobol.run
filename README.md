@@ -10,7 +10,7 @@ Run serverless COBOL programs on [OpenWhisk](https://www.ibm.com/cloud-computing
 
 The user sends a `POST` request containing COBOL source code, and receives as a response the result of the execution of the program.
 
-<img src="http://cdn.langa.io/cobol.run/cobol-run-intro-video.png" width="640px">
+[<img src="http://cdn.langa.io/cobol.run/cobol-run-intro-video.png" width="640px">](https://www.youtube.com/watch?v=Wn2tE4VVYYQ)
 
 ### Example
 
