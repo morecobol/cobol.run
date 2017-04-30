@@ -10,7 +10,7 @@ module.exports = class OpenwhiskController extends Controller {
    * Check any necessary preconditions for the action
    */
   init (request, reply) {
-    this.log.info('OpenwhiskController.init: request payload', request.payload)
+    this.log.debug('OpenwhiskController.init: request payload', request.payload)
     reply({ OK: true })
   }
 
@@ -24,7 +24,7 @@ module.exports = class OpenwhiskController extends Controller {
       options: { }
     }, request.payload.value)
 
-    this.log.info('OpenwhiskController.run: invoking action with payload', request.payload.value)
+    this.log.debug('OpenwhiskController.run: invoking action with payload', request.payload.value)
 
     reply(this.services.OpenwhiskService.run(payload))
   }

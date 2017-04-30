@@ -11,11 +11,12 @@ module.exports = class CobolService extends Service {
   writeFiles (files) {
     return Promise.all([
       files.map(file => new Promise((resolve, reject) => {
-        this.log.info('CobolService.writeFiles: writing file', file.name, '...')
+        this.log.debug('CobolService.writeFiles: writing file', file.name, '...')
+
         fs.writeFile(file.name, file.data + '\n', error => {
           if (error) return reject({ error })
 
-          this.log.info('CobolService.writeFiles: wrote file', file.name, '...')
+          this.log.debug('CobolService.writeFiles: wrote file', file.name, '...')
           return resolve({ file })
         })
       }))
@@ -30,7 +31,7 @@ module.exports = class CobolService extends Service {
     const spawnArgs = [ ...compilerOptions, ...args ]
 
     return new Promise((resolve, reject) => {
-      this.log.info('CobolService.compileAndRun: spawning cobc process with args', spawnArgs)
+      this.log.debug('CobolService.compileAndRun: spawning cobc process with args', spawnArgs)
 
       const cobc = spawn('cobc', spawnArgs)
       cobc.stdout.on('data', data => output += data.toString())
@@ -56,6 +57,6 @@ module.exports = class CobolService extends Service {
 
   constructor (app) {
     super(app)
-    this.log.info('Using cobc compiler version', this.config.cobol.compilerVersion)
+    this.log.debug('Using cobc compiler version', this.config.cobol.compilerVersion)
   }
 }

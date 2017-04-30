@@ -2,5 +2,5 @@
   "options": {
     "dialect": "cobol2014"
   },
-  "source": "identification division. program-id. hello. procedure division. display \"hello world\"."
+  "source": "identification division. program-id. hello. procedure division. display \"hello world 2nd try\"."
 }
