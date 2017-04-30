@@ -22,3 +22,7 @@ before_install:
   - sudo make install
   - sudo ldconfig
   - cobc --version
+  - cd ..
+
+script:
+  - npm test
