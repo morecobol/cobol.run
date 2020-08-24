@@ -1,4 +1,6 @@
 FROM morecobol/gnucobol
+RUN sed -i.bak -r 's/(archive|security).ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list
+RUN apt-get update
 
 # install node and other sys dependencies
 RUN apt-get install curl -y
